@@ -1,3 +1,4 @@
+```html```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>Code language not supported or defined.
@@ -338,18 +339,89 @@
           </div>
         </div>
 
-        <!-- Forma de pagamento: PIX ou cartão -->
-        <div class="campo full-width">
-          <label><i class="fas fa-credit-card"></i> Forma de pagamento</label>
-          <div class="radio-group">
-            <label><input type="radio" name="pagamento" value="PIX" checked> <i class="fas fa-qrcode"></i> PIX</label>
-            <label><input type="radio" name="pagamento" value="Cartão de crédito"> <i class="fas fa-credit-card"></i> Cartão de crédito</label>
-          </div>
-        </div>
+       <!-- Forma de pagamento: PIX ou cartão -->
+<div class="campo full-width">
+  <label><i class="fas fa-credit-card"></i> Forma de pagamento</label>
+  <div class="radio-group">
+    <label><input type="radio" name="pagamento" value="PIX" checked id="pixRadio" onchange="togglePagamento()"> <i class="fas fa-qrcode"></i> PIX</label>
+    <label><input type="radio" name="pagamento" value="Cartão de crédito" id="cartaoRadio" onchange="togglePagamento()"> <i class="fas fa-credit-card"></i> Cartão de crédito</label>
+  </div>
+  
+  <!-- QR Code com animação -->
+  <div id="qrCodeContainer" class="qr-container" style="margin-top: 15px; text-align: center; display: block;">
+    <div class="qr-box" style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); display: inline-block;">
+      <img id="qrCodeImage" src="caminho/qrcode.png" alt="QR Code PIX" style="width: 200px; height: 200px; margin: 0 auto; display: block;">
+      <p style="margin: 10px 0 5px; font-weight: bold;">Valor: R$ 100,00</p>
+      <p style="font-size: 12px; color: #999;">Chave: seu-email@dominio.com</p>
+      <button onclick="copiarChavePIX()" style="margin-top: 10px; padding: 6px 12px; background: #00875A; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px;">
+        <i class="fas fa-copy"></i> Copiar chave
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+.qr-container {
+  transition: all 0.3s ease;
+}
+
+.qr-container.hidden {
+  display: none;
+  opacity: 0;
+}
+
+.qr-box {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+
+<script>
+function togglePagamento() {
+  const pixSelecionado = document.getElementById('pixRadio').checked;
+  const qrContainer = document.getElementById('qrCodeContainer');
+  
+  if (pixSelecionado) {
+    qrContainer.style.display = 'block';
+    qrContainer.classList.remove('hidden');
+  } else {
+    qrContainer.classList.add('hidden');
+    setTimeout(() => {
+      qrContainer.style.display = 'none';
+    }, 300);
+  }
+}
+
+function copiarChavePIX() {
+  const chave = 'seu-email@dominio.com';
+  navigator.clipboard.writeText(chave).then(() => {
+    alert('Chave PIX copiada!');
+  }).catch(() => {
+    // Fallback para navegadores antigos
+    const input = document.createElement('input');
+    input.value = chave;
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand('copy');
+    document.body.removeChild(input);
+    alert('Chave PIX copiada!');
+  });
+}
+</script>
 
         <!-- Campo oculto para salvar em nuvem (excel) - apenas simbólico, o envio será capturado -->
         <div class="full-width" style="font-size: 0.8rem; color: #1e3a6b; background: #dce6f5; padding: 6px 14px; border-radius: 40px; display: flex; gap: 10px; align-items: center;">
-          <i class="fas fa-cloud-upload-alt" style="color:#0d47a1;"></i> Os dados serão salvos em nuvem (formato Excel) para controle.
+          <i class="fas fa-cloud-upload-alt" style="color:#0d47a1;"></i> 
         </div>
       </div>
 
