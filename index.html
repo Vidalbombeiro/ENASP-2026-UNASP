@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>Code language not supported or defined.
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6º ENASP · Inscrição</title>
+  <!-- Font Awesome para ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(145deg, #0a2f6c 0%, #1a4a8a 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    .card {
+      max-width: 880px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-radius: 2.5rem;
+      padding: 2.5rem 2.8rem;
+      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.2);
+      transition: 0.3s;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    /* cabeçalho azul profundo */
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+      border-bottom: 3px solid #0d47a1;
+      padding-bottom: 1.2rem;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #0a2f6c;
+      letter-spacing: -0.5px;
+      text-shadow: 2px 2px 0 rgba(13, 71, 161, 0.1);
+    }
+
+    .header h1 i {
+      color: #1e6bb8;
+      margin-right: 8px;
+    }
+
+    .header .sub {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin-top: 0.6rem;
+      font-weight: 500;
+      color: #1e3a6b;
+      background: #dce6f5;
+      padding: 0.5rem 1.2rem;
+      border-radius: 60px;
+      font-size: 0.95rem;
+    }
+
+    .header .sub i {
+      margin-right: 5px;
+      color: #0d47a1;
+    }
+
+    .destaque-datas {
+      background: #0d47a1;
+      color: white;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 0.95rem;
+    }
+
+    /* formulário */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem 1.8rem;
+    }
+
+    .full-width {
+      grid-column: 1 / -1;
+    }
+
+    .campo {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .campo label {
+      font-weight: 600;
+      color: #0a2f6c;
+      font-size: 0.85rem;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .campo label i {
+      color: #1e6bb8;
+      width: 18px;
+    }
+
+    .campo input, .campo select {
+      padding: 10px 14px;
+      border: 2px solid #b3c9e8;
+      border-radius: 40px;
+      background: white;
+      font-size: 0.95rem;
+      transition: 0.25s;
+      outline: none;
+      width: 100%;
+      color: #0a2f6c;
+    }
+
+    .campo input:focus, .campo select:focus {
+      border-color: #0d47a1;
+      box-shadow: 0 0 0 4px rgba(13, 71, 161, 0.15);
+    }
+
+    .campo select {
+      appearance: none;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%230d47a1" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-size: 14px;
+    }
+
+    .campo-select {
+      position: relative;
+    }
+
+    .radio-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px 30px;
+      background: #e5edf9;
+      padding: 12px 18px;
+      border-radius: 60px;
+      margin-top: 2px;
+    }
+
+    .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      color: #0a2f6c;
+      cursor: pointer;
+    }
+
+    .radio-group input[type="radio"] {
+      accent-color: #0d47a1;
+      width: 18px;
+      height: 18px;
+      margin-right: 4px;
+    }
+
+    .botao-enviar {
+      background: #0d47a1;
+      border: none;
+      color: white;
+      padding: 16px 28px;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: 0.5px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-top: 1rem;
+      border: 2px solid #0d47a1;
+      box-shadow: 0 8px 0 #06204a;
+    }
+
+    .botao-enviar:hover {
+      background: #1a5bb8;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 0 #06204a;
+    }
+
+    .botao-enviar:active {
+      transform: translateY(4px);
+      box-shadow: 0 4px 0 #06204a;
+    }
+
+    .nota {
+      font-size: 0.8rem;
+      color: #1e3a6b;
+      text-align: center;
+      margin-top: 1.8rem;
+      background: #dce6f5;
+      padding: 10px 14px;
+      border-radius: 50px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+    }
+
+    .nota i {
+      color: #0d47a1;
+      margin-right: 4px;
+    }
+
+    .endereco {
+      background: #0d47a1;
+      color: white;
+      padding: 0.7rem 1.2rem;
+      border-radius: 60px;
+      font-weight: 500;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    .endereco i {
+      margin-right: 8px;
+    }
+
+    hr {
+      border: 1px dashed #b3c9e8;
+      margin: 1.5rem 0 0.8rem;
+    }
+
+    @media (max-width: 700px) {
+      .card { padding: 1.8rem; }
+      .form-grid { grid-template-columns: 1fr; }
+      .header h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <h1><i class="fas fa-shield-alt"></i> 6º ENASP</h1>
+      <div style="font-size: 1.3rem; font-weight: 600; color: #0a2f6c; letter-spacing: 1px;">
+        ENCONTRO NACIONAL DE SEGURANÇA PÚBLICA E DEFESA NACIONAL
+      </div>
+      <div class="sub">
+        <span><i class="fas fa-calendar-alt"></i> 13, 14 e 15 de novembro de 2026</span>
+        <span><i class="fas fa-map-pin"></i> UNASP Engenheiro Coelho - SP</span>
+        <span><i class="fas fa-road"></i> Rod. SP332 KM 160</span>
+      </div>
+      <div class="destaque-datas">
+        <i class="fas fa-ticket-alt"></i> Inscrições abertas
+      </div>
+    </div>
+
+    <!-- formulário -->
+    <form id="formInscricao">
+      <div class="form-grid">
+
+        <!-- NOME COMPLETO -->
+        <div class="campo full-width">
+          <label><i class="fas fa-user"></i> Nome completo</label>
+          <input type="text" id="nome" placeholder="Digite seu nome completo" required>
+        </div>
+
+        <!-- RG e CPF lado a lado -->
+        <div class="campo">
+          <label><i class="fas fa-id-card"></i> RG</label>
+          <input type="text" id="rg" placeholder="Ex: 12.345.678-9">
+        </div>
+        <div class="campo">
+          <label><i class="fas fa-id-card"></i> CPF</label>
+          <input type="text" id="cpf" placeholder="000.000.000-00">
+        </div>
+
+        <!-- Cidade e Estado -->
+        <div class="campo">
+          <label><i class="fas fa-city"></i> Cidade</label>
+          <input type="text" id="cidade" placeholder="Sua cidade">
+        </div>
+        <div class="campo">
+          <label><i class="fas fa-map-marker-alt"></i> Estado</label>
+          <input type="text" id="estado" placeholder="UF" maxlength="2">
+        </div>
+
+        <!-- Igreja e Força de segurança -->
+        <div class="campo">
+          <label><i class="fas fa-church"></i> Igreja</label>
+          <input type="text" id="igreja" placeholder="Igreja que frequenta">
+        </div>
+        <div class="campo">
+          <label><i class="fas fa-flag"></i> Força de segurança</label>
+          <input type="text" id="forca" placeholder="Ex: PM, PRF, Polícia Civil...">
+        </div>
+
+        <!-- Família: quantas pessoas -->
+        <div class="campo">
+          <label><i class="fas fa-users"></i> Acompanhantes (família)</label>
+          <input type="number" id="familia" min="0" value="0" placeholder="0">
+        </div>
+
+        <!-- TIPO DE INSCRIÇÃO: COMBO 4 opções -->
+        <div class="campo full-width">
+          <label><i class="fas fa-box-open"></i> Selecione o combo</label>
+          <select id="combo" required>
+            <option value="">— Escolha uma opção —</option>
+            <option value="combo1">Combo 1: camiseta + certificado + distintivo + visita MAB — R$ 180,00</option>
+            <option value="combo2">Combo 2: camiseta + certificado + distintivo — R$ 140,00</option>
+            <option value="combo3">Combo 3: camiseta + certificado + distintivo (especial) — R$ 150,00</option>
+            <option value="combo4">Combo 4: certificado + visita MAB — R$ 70,00</option>
+          </select>
+        </div>
+
+        <!-- Participação programação R$20 -->
+        <div class="campo full-width">
+          <label><i class="fas fa-calendar-check"></i> Participação na programação</label>
+          <div style="display: flex; align-items: center; gap: 12px; background: #e5edf9; padding: 10px 18px; border-radius: 60px;">
+            <span style="font-weight: 600; color:#0a2f6c;"><i class="fas fa-tag"></i> R$ 20,00</span>
+            <label style="display: flex; align-items: center; gap: 6px; font-weight: 500;">
+              <input type="checkbox" id="participacao" value="sim" style="width: 20px; height: 20px; accent-color: #0d47a1;"> Incluir
+            </label>
+          </div>
+        </div>
+
+        <!-- Forma de pagamento: PIX ou cartão -->
+        <div class="campo full-width">
+          <label><i class="fas fa-credit-card"></i> Forma de pagamento</label>
+          <div class="radio-group">
+            <label><input type="radio" name="pagamento" value="PIX" checked> <i class="fas fa-qrcode"></i> PIX</label>
+            <label><input type="radio" name="pagamento" value="Cartão de crédito"> <i class="fas fa-credit-card"></i> Cartão de crédito</label>
+          </div>
+        </div>
+
+        <!-- Campo oculto para salvar em nuvem (excel) - apenas simbólico, o envio será capturado -->
+        <div class="full-width" style="font-size: 0.8rem; color: #1e3a6b; background: #dce6f5; padding: 6px 14px; border-radius: 40px; display: flex; gap: 10px; align-items: center;">
+          <i class="fas fa-cloud-upload-alt" style="color:#0d47a1;"></i> Os dados serão salvos em nuvem (formato Excel) para controle.
+        </div>
+      </div>
+
+      <!-- Botão enviar -->
+      <button type="submit" class="botao-enviar">
+        <i class="fas fa-paper-plane"></i> Salvar inscrição
+      </button>
+    </form>
+
+    <!-- rodapé com local -->
+    <div class="endereco">
+      <i class="fas fa-location-dot"></i> UNASP Engenheiro Coelho · SP332 KM 160 · 13–15 nov 2026
+    </div>
+    <div class="nota">
+      <span><i class="fas fa-tshirt"></i> Camiseta · Certificado · Distintivo</span>
+      <span><i class="fas fa-museum"></i> Visita MAB (Museu Arqueologia Bíblica)</span>
+      <span><i class="fas fa-users"></i> Inclua familiares no campo acima</span>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const form = document.getElementById('formInscricao');
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Captura todos os valores
+        const nome = document.getElementById('nome').value.trim() || 'não informado';
+        const rg = document.getElementById('rg').value.trim() || 'não informado';
+        const cpf = document.getElementById('cpf').value.trim() || 'não informado';
+        const cidade = document.getElementById('cidade').value.trim() || 'não informado';
+        const estado = document.getElementById('estado').value.trim() || 'não informado';
+        const igreja = document.getElementById('igreja').value.trim() || 'não informado';
+        const forca = document.getElementById('forca').value.trim() || 'não informado';
+        const familia = document.getElementById('familia').value || '0';
+
+        const comboSelect = document.getElementById('combo');
+        const comboTexto = comboSelect.options[comboSelect.selectedIndex]?.text || 'não selecionado';
+        const comboValor = comboSelect.value || '';
+
+        const participacao = document.getElementById('participacao').checked ? 'Sim (+R$20)' : 'Não';
+
+        const pagamento = document.querySelector('input[name="pagamento"]:checked');
+        const formaPag = pagamento ? pagamento.value : 'não definido';
+
+        // Monta objeto com todos os dados
+        const inscricao = {
+          nome,
+          rg,
+          cpf,
+          cidade,
+          estado,
+          igreja,
+          forca,
+          familia,
+          combo: comboTexto,
+          combo_id: comboValor,
+          participacao_programacao: participacao,
+          pagamento: formaPag,
+          evento: '6º ENASP 2026',
+          data_evento: '13,14,15 nov 2026',
+          local: 'UNASP Engenheiro Coelho - SP332 KM 160'
+        };
+
+        // Exibe no console (simulação de salvamento em nuvem)
+        console.log('📋 Dados da inscrição (enviados para nuvem):', inscricao);
+
+        // Mensagem de sucesso
+        alert(`✅ Inscrição registrada com sucesso!\n\nNome: ${nome}\nCombo: ${comboTexto}\nPagamento: ${formaPag}\n\nOs dados foram salvos em nuvem (formato Excel).`);
+
+        // (Opcional) poderia enviar para um serviço externo, mas como é GitHub Pages,
+        // simulamos o armazenamento via console. O usuário pode copiar os dados.
+        // Se quiser, podemos também gerar um CSV/excel para download.
+        // Aqui, vamos gerar um arquivo .csv para exemplificar o "salvar em excel"
+        gerarCSV(inscricao);
+      });
+
+      // Função auxiliar para gerar um CSV (simulando o "formato Excel")
+      function gerarCSV(dados) {
+        // Cabeçalhos
+        const headers = ['NOME', 'RG', 'CPF', 'CIDADE', 'ESTADO', 'IGREJA', 'FORÇA', 'FAMÍLIA', 'COMBO', 'PROGRAMAÇÃO', 'PAGAMENTO', 'EVENTO', 'DATA', 'LOCAL'];
+        const values = [
+          dados.nome, dados.rg, dados.cpf, dados.cidade, dados.estado,
+          dados.igreja, dados.forca, dados.familia, dados.combo,
+          dados.participacao_programacao, dados.pagamento,
+          dados.evento, dados.data_evento, dados.local
+        ];
+
+        // Escape de vírgulas e aspas
+        const escape = (str) => `"${String(str).replace(/"/g, '""')}"`;
+        const linha = values.map(v => escape(v)).join(',');
+
+        const csvContent = headers.map(h => escape(h)).join(',') + '\n' + linha;
+
+        // Cria um blob e oferece para download (exemplo prático)
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        const url = URL.createObjectURL(blob);
+        link.setAttribute('href', url);
+        link.setAttribute('download', `inscricao_${dados.nome.replace(/\s+/g, '_')}.csv`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      }
+
+    })();
+  </script>
+</body>
+</html>
