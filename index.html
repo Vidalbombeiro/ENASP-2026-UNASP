@@ -187,8 +187,9 @@
       align-items: center;
       justify-content: center;
       gap: 12px;
-      width: 100%;
+      width: 350px;
       cursor: pointer;
+      margin-bottom: 1rem;
       transition: 0.2s;
       margin-top: 1rem;
       border: 2px solid #0d47a1;
@@ -313,6 +314,62 @@
       .form-grid { grid-template-columns: 1fr; }
       .header h1 { font-size: 2rem; }
     }
+
+
+     .whatsapp-icon {
+            background: #25D366;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 40px;
+            color: white;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: #25D366;
+            color: white;
+            padding: 16px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .btn-whatsapp:hover {
+            background: #1da851;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-whatsapp i {
+            font-size: 22px;
+        }
+
+        .info {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .info span {
+            display: block;
+            margin-top: 5px;
+            color: #333;
+            font-weight: 600;
+        }
   </style>
 </head>
 <body>
@@ -406,7 +463,7 @@
           <label><i class="fas fa-credit-card"></i> Forma de pagamento *</label>
           <div class="radio-group">
             <label><input type="radio" name="pagamento" value="PIX" checked id="pixRadio" onchange="togglePagamento()"> <i class="fas fa-qrcode"></i> PIX</label>
-            <label><input type="radio" name="pagamento" value="Cartão de Crédito" id="cartaoRadio" onchange="togglePagamento()"> <i class="fas fa-credit-card"></i> Cartão de crédito</label>
+         
           </div>
           
           <!-- QR Code com animação -->
@@ -424,11 +481,12 @@
 
         <!-- Mensagem de status -->
         <div id="mensagemStatus" class="mensagem-status"></div>
-
+        <div class="full-width campo"  style="display: flex; flex-direction: column; align-items: center;">
         <!-- Botão enviar -->
         <button type="submit" class="botao-enviar" id="btnEnviar">
           <i class="fas fa-paper-plane"></i> Salvar inscrição
         </button>
+        </div>
       </div>
     </form>
 
@@ -436,6 +494,17 @@
     <div class="endereco">
       <i class="fas fa-location-dot"></i> UNASP Engenheiro Coelho · SP332 KM 160 · 13–15 nov 2026
     </div>
+   
+        <a href="https://wa.me/555182160400?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20o%206º%20ENASP." 
+           target="_blank" 
+           class="btn-whatsapp"
+           style="margin-top: 20px; display: inline-block; text-decoration: none; text-align: center; width: 100%">
+            <i class="fab fa-whatsapp"></i>
+            Para mais duvidas entre em contato via WhatsApp
+        </a>
+
+    
+
     <div class="nota">
       <span><i class="fas fa-tshirt"></i> Camiseta · Certificado · Distintivo</span>
       <span><i class="fas fa-museum"></i> Visita MAB (Museu Arqueologia Bíblica)</span>
