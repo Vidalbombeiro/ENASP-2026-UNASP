@@ -1,7 +1,6 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>Code language not supported or defined.
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>6º ENASP · Inscrição</title>
@@ -350,9 +349,9 @@
   <!-- QR Code com animação -->
   <div id="qrCodeContainer" class="qr-container" style="margin-top: 15px; text-align: center; display: block;">
     <div class="qr-box" style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); display: inline-block;">
-      <img id="qrCodeImage" src="caminho/qrcode.png" alt="QR Code PIX" style="width: 200px; height: 200px; margin: 0 auto; display: block;">
+      <img id="qrCodeImage" src="./qrcodefinal.jpeg" alt="QR Code PIX" style="width: 200px; height: 200px; margin: 0 auto; display: block;">
       <p style="margin: 10px 0 5px; font-weight: bold;"p>
-      <p style="font-size: 12px; color: #999;">Chave: seu-email@dominio.com</p>
+      <p style="font-size: 12px; color: #999;">Chave: 00020126820014BR.GOV.BCB.PIX0136e72ea8ad-9d69-409b-a769-f2a20b041b5c0220INSCRICAO ENASP 20265204000053039865802BR5923Leonardo Passos Pinaffo6009Sao Paulo62290525REC6A58F5E21DF7659973562563046976</p>
       <button onclick="copiarChavePIX()" style="margin-top: 10px; padding: 6px 12px; background: #00875A; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px;">
         <i class="fas fa-copy"></i> Copiar chave
       </button>
@@ -403,7 +402,7 @@ function togglePagamento() {
 }
 
 function copiarChavePIX() {
-  const chave = 'seu-email@dominio.com';
+  const chave = '00020126820014BR.GOV.BCB.PIX0136e72ea8ad-9d69-409b-a769-f2a20b041b5c0220INSCRICAO ENASP 20265204000053039865802BR5923Leonardo Passos Pinaffo6009Sao Paulo62290525REC6A58F5E21DF7659973562563046976';
   navigator.clipboard.writeText(chave).then(() => {
     alert('Chave PIX copiada!');
   }).catch(() => {
